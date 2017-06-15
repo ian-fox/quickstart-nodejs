@@ -5,6 +5,7 @@
 workflow:
   # We define the workflow where the "publish" Job is started after the "main" Job.
   - wait
+  - finish
 
 
 # Shared definition block
@@ -37,8 +38,10 @@ jobs:
   # on publishing our package to the NPM Registry.
   wait:
     steps:
-      # "set_access" is the first step that is executed. We want the community to use
-      # our package, so we enable publicly accessible
-      # NPM reference document - https://docs.npmjs.com/cli/access
-      - sleep 2m
-      - echo Finished
+      # Sleep so I have time to show the build is running
+      - sleep 60
+
+  finish:
+    steps:
+      # Print stuff
+      - echo "All done!"
